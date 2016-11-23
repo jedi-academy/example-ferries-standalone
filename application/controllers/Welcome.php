@@ -8,6 +8,7 @@ class Welcome extends Application {
 	{
 		parent::__construct();
 		$this->load->model('ferryschedule');
+		$this->data['pagetitle'] = 'Ferry Trip Planner (Stand-alone)';
 	}
 
 	/**
@@ -16,7 +17,7 @@ class Welcome extends Application {
 	function index()
 	{
 		$this->load->helper('formfields');
-		$this->data['title'] = 'Ferry Trip Planner (Stand-alone)';
+		$this->data['title'] = 'Ferry Trip Planner';
 		$this->data['pagebody'] = 'planner';
 		// get all the ports from our model
 		$ports = $this->ferryschedule->getPorts();
