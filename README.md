@@ -5,9 +5,7 @@ amongst the Southern Gulf Islands. The data supplied is old, so don't
 rely on it for a current trip!
 
 A model of the schedule is provided as an XML document, and encapsulated
-with a CodeIgniter model. This webapp will be teased apart, so that the
-schedule is managed "remotely", making way for potential multiple
-clients to provide planning or booking front-end apps.
+with a CodeIgniter model. This webapp will be teased apart, as explained below.
 
 This webapp is built on top of the CI3 starter3, and adds or changes the
 following:
@@ -27,22 +25,17 @@ following:
         /assets
             ferry.png
 
-It also incorporates the Caboose package from the Jedi Academy, so that we can 
+It also incorporates the [Caboose package](https://github.com/jedi-academy/package-caboose), 
+so that we can 
 use the formfields helper; we don't need BootStrap or the Caboose library.
 
 ##Converting this standalone app into a distributed pair of apps
 
 This app is a good candidate for teasing apart into distributed system components.
-The ferry schedule data could be managed centrally, and the field would be opened
+The ferry schedule data could be managed centrally, which would provide opportunities
 for a number of client apps (for instance for different UI paradigms, or integrated
 into business partners' websites). The client apps would share the same up-to-date
 data, managed by the server app.
-
-There are two related repositories:
-- example-ferries-server, which has suitable endpoints for clients to access
-port information and to request filtered sailing lists, and
-- example-ferries-client, which uses appropriate distributed system glue to
-make requests of the server.
 
 The most sensible solution, to me, is to modify our Ferryschedules model,
 so that it makes remote requests to get data, rather than extracting it from
@@ -55,9 +48,16 @@ would suit REST)
 - accessing the sailing functionality is more of a remote procedure call (that
 would suit XML-RPC)
 
-Check out the other two repositories to see how I did this.
+There are two related repositories which demonstrate this:
+- [example-ferries-server](https://github.com/jedi-academy/example-ferries-server), 
+which has suitable endpoints for clients to access
+port information and to request filtered sailing lists, and
+- [example-ferries-client](https://github.com/jedi-academy/example-ferries-client), 
+which uses appropriate distributed system glue to
+make requests of the server.
+
 
 ##Deployment
 
 This app is self-contained. Extract it somewhere suitable, and map
-a virtual host (eg alone.local) to its <code>public</code> folder.
+a virtual host (eg <code>alone.local</code>) to its <code>public</code> folder.
