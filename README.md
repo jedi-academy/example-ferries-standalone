@@ -1,4 +1,4 @@
-# example-rest-not
+# example-ferries-standalone
 
 This is a very simple webapp, to assist with travel planning
 amongst the Southern Gulf Islands. The data supplied is old, so don't
